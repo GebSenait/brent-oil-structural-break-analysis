@@ -1,0 +1,13 @@
+# Birhan Energies — Change Point Analysis (Task-1 foundation)
+# Python 3.10+ recommended. Use: pip install -r requirements.txt
+
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+statsmodels>=0.14.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Optional for future Task-2 (Bayesian)
+# pymc>=5.0.0
+# arviz>=0.15.0
