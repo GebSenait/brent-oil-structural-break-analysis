@@ -1,5 +1,5 @@
 """Validate Task-1 deliverables: event schema, docs content, and key artifacts."""
-import pytest
+
 import csv
 from pathlib import Path
 
@@ -7,7 +7,14 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # Event CSV schema (per data/events/README.md)
 EVENT_REQUIRED_COLUMNS = ["event_id", "date", "category", "short_name"]
-EVENT_CATEGORIES = {"geopolitical", "economic", "opec_policy", "supply_shock", "demand_shock", "other"}
+EVENT_CATEGORIES = {
+    "geopolitical",
+    "economic",
+    "opec_policy",
+    "supply_shock",
+    "demand_shock",
+    "other",
+}
 MIN_EVENTS = 10
 MAX_EVENTS = 20  # 10-15 requested; allow some headroom
 

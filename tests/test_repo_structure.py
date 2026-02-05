@@ -1,4 +1,5 @@
 """Ensure repository code structure meets project standards."""
+
 import pytest
 from pathlib import Path
 

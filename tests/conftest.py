@@ -1,4 +1,5 @@
 """Pytest fixtures: repo root and paths."""
+
 import pytest
 from pathlib import Path
 

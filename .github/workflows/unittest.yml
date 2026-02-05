@@ -25,7 +25,7 @@ jobs:
         run: pip install ruff
 
       - name: Run ruff check
-        run: ruff check . --ignore .venv,venv,__pycache__,.git
+        run: ruff check .
 
       - name: Run ruff format (check only)
         run: ruff format --check .
