@@ -41,7 +41,7 @@ High-level flow (each step is documented and reproducible):
 | **Volatility**   | Rolling std, squared returns; visual inspection of volatility clusters | Inform variance structure (constant vs. time-varying) and priors in Bayesian models. |
 | **Autocorrelation** | ACF/PACF of returns          | Guide AR/MA components if we add them later; check for simple dependencies. |
 
-Results will be summarized in this folder and in notebooks, with clear statements such as “Brent returns are treated as stationary for the change point model” or “Volatility is time-varying; we will use a heteroskedastic specification.”
+Results are summarized in **`docs/task-1/DIAGNOSTIC-RESULTS.md`** and in the notebook. Run **`notebooks/task1_ingest_clean_diagnose.ipynb`** to execute the full ingest → clean → diagnose workflow and regenerate that summary and figures. Clear statements include “Brent returns are treated as stationary for the change point model” or “Volatility is time-varying; we will use a heteroskedastic specification.”
 
 ## 4. Change Point Model — Purpose, Outputs, Limitations
 
@@ -69,5 +69,5 @@ A concise technical note on the exact models to be used (e.g. Bayesian offline c
 - **Repository structure** and README as the single entry point for the project.
 - **Event dataset**: CSV with 10–15 events, schema, and an assumptions document (see `data/events/`).
 - **Task-1 documentation**: This file plus any linked notes (assumptions, limitations, correlation vs. causation).
-- **Diagnostics plan**: As above; results to be filled in once data is run through the workflow.
-- **Clear handoff**: Processed data and documentation ready for Task-2 (Bayesian modeling) and future dashboards.
+- **Diagnostics**: Run **`notebooks/task1_ingest_clean_diagnose.ipynb`** to perform ingest → clean → diagnose; results are recorded in **`docs/task-1/DIAGNOSTIC-RESULTS.md`** and optional figures in this folder.
+- **Clear handoff**: Processed series in `data/processed/` and documentation ready for Task-2 (Bayesian modeling) and future dashboards.

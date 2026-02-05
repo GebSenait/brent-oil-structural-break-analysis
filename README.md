@@ -87,18 +87,53 @@ All steps are implemented in code (e.g. `src/`, notebooks) and documented so the
 
 ---
 
+## Task-1: Test results, execution, and recommendations
+
+### Execution
+
+- **Notebook**: Run **`notebooks/task1_ingest_clean_diagnose.ipynb`** (Run All) with the project’s Python environment. The notebook runs: **Ingest** (Brent + events) → **Clean & align** (trading-day rule) → **Diagnose** (trend, ADF/KPSS, volatility, ACF/PACF) → **Document** (writes `docs/task-1/DIAGNOSTIC-RESULTS.md` and figures) → **Prepare** (saves `data/processed/` for Task-2).
+- **Outputs**: `docs/task-1/DIAGNOSTIC-RESULTS.md`, `diagnostic_trend_volatility.png`, `diagnostic_acf_pacf_returns.png`, and processed series in `data/processed/` (cleaned prices, returns, events aligned to trading days).
+
+### Test results (from latest run)
+
+| Item | Result |
+|------|--------|
+| **Brent series** | ~9,011 daily observations (1987-05-20 to 2022-11-14). |
+| **Returns** | ~9,010 observations after first difference. |
+| **Events aligned** | 12 of 14 events mapped to first trading day on or after calendar date (2 outside price range). |
+| **ADF (levels)** | Cannot reject unit root (p ≈ 0.29) → **levels non-stationary**. |
+| **ADF (returns)** | Reject unit root (p ≈ 0.00) → **returns stationary**. |
+| **KPSS (levels)** | Reject level stationarity → **levels non-stationary**. |
+| **KPSS (returns)** | Do not reject level stationarity → **returns stationary**. |
+
+### Analysis
+
+- **Levels vs returns**: Brent **price levels** are treated as **non-stationary**; **returns** are treated as **stationary**. Change point and volatility modeling in Task-2 should use **returns** (or a stationary transform), not raw levels.
+- **Volatility**: Rolling volatility is **time-varying** (e.g. spikes around 2008 and 2020). Task-2 should allow **heteroskedastic or regime-switching variance**, not constant variance.
+- **Events**: The curated event list (geopolitical, economic, OPEC) is aligned to the price timeline; it will be used to **interpret** detected break dates (narrative only, no causal claim).
+
+### Recommendations
+
+- **For Task-2**: Use `data/processed/brent_returns.csv` and `events_aligned.csv`; model returns with time-varying or regime-dependent variance; compare posterior break dates to event dates for consistency.
+- **For stakeholders**: Use Task-1 deliverables as the single source of truth for event definitions and alignment. When reporting Task-2 results, phrase findings as “structural break is consistent with the timing of event X,” not “event X caused the break.”
+- **For reproducibility**: Re-run the notebook after any change to raw data or event list; `DIAGNOSTIC-RESULTS.md` and figures will update. See `docs/task-1/README.md` and `docs/task-1/ASSUMPTIONS-AND-LIMITATIONS.md` for full context.
+
+---
+
 ## Repository structure
 
 | Path | Purpose |
 |------|---------|
+| `.github/workflows/` | CI/CD: `unittest.yml` (lint, tests, Task-1 pipeline). |
 | `data/raw/` | Unaltered Brent price series and external inputs. |
 | `data/processed/` | Cleaned, derived series for modeling. |
 | `data/events/` | Geopolitical/economic/OPEC event dataset (CSV + README). |
 | `docs/` | Project and task documentation; `docs/task-1/` for Task-1. |
 | `notebooks/` | Exploratory and Task-1 workflows; future Bayesian/dashboard work. |
 | `src/` | Data loaders, diagnostics, and (later) models. |
+| `tests/` | Pytest: repo structure, Task-1 deliverables, pipeline checks. |
 
-See `data/README.md`, `notebooks/README.md`, and `src/README.md` for details.
+See `data/README.md`, `notebooks/README.md`, `src/README.md`, and `docs/CONTRIBUTING.md` (CI/CD) for details.
 
 ---
 
@@ -114,9 +149,9 @@ See `data/README.md`, `notebooks/README.md`, and `src/README.md` for details.
 ## Getting started
 
 1. Clone the repo; switch to `task-1-dev` for Task-1 work.
-2. Create a virtual environment and install dependencies from `requirements.txt`.
-3. Place Brent price data in `data/raw/` and document the source.
+2. **Create and activate a Python virtual environment**, then install dependencies. See **`docs/SETUP.md`** for step-by-step instructions. Use Python **3.10+**; install from `requirements.txt`.
+3. Place Brent price data in `data/raw/` and document the source (or use existing `BrentOilPrices.csv`).
 4. Follow the workflow in `docs/task-1/README.md` (ingest → diagnose → document).
-5. Run notebooks in order where dependencies exist; record diagnostics in `docs/task-1/`.
+5. Run **`notebooks/task1_ingest_clean_diagnose.ipynb`** with the venv kernel selected; diagnostics are recorded in `docs/task-1/`.
 
 For contribution and commit strategy, see `docs/CONTRIBUTING.md`.

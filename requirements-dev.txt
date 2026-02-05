@@ -1,0 +1,6 @@
+# Dev and CI: linting, testing
+# pip install -r requirements-dev.txt
+
+-r requirements.txt
+pytest>=7.0.0
+ruff>=0.1.0

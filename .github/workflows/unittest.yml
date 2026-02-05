@@ -1,0 +1,82 @@
+# CI: Lint, repo structure, Task-1 deliverables, and diagnostic workflow
+# Runs on push/PR to main and task-1-dev per CONTRIBUTING branching strategy.
+
+name: CI (lint + unittest)
+
+on:
+  push:
+    branches: [main, task-1-dev]
+  pull_request:
+    branches: [main, task-1-dev]
+
+jobs:
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Run ruff check
+        run: ruff check . --ignore .venv,venv,__pycache__,.git
+
+      - name: Run ruff format (check only)
+        run: ruff format --check .
+
+  test:
+    name: Test (structure + Task-1 + diagnostics)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short
+
+  # Optional: run diagnostics and assert outputs exist (validates full Task-1 pipeline)
+  task1-pipeline:
+    name: Task-1 pipeline (run diagnostics)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Task-1 diagnostics script
+        run: python notebooks/run_diagnostics.py
+
+      - name: Check Task-1 outputs
+        run: |
+          test -f docs/task-1/DIAGNOSTIC-RESULTS.md
+          test -f data/processed/brent_returns.csv
+          test -f data/processed/events_aligned.csv
+          test -f data/processed/brent_prices_cleaned.csv
+          grep -q "Brent series" docs/task-1/DIAGNOSTIC-RESULTS.md
+          echo "Task-1 deliverables present."

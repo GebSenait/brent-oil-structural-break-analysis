@@ -15,8 +15,17 @@
   - `fix: correct event date for OPEC+ 2020 cut`
 - **No direct pushes to main**: Use Pull Requests; require review for main.
 
+## CI/CD (GitHub Actions)
+
+- **Workflow**: `.github/workflows/unittest.yml` runs on every push and pull request to `main` and `task-1-dev`.
+- **Jobs**:
+  1. **Lint**: `ruff check` and `ruff format --check` for code quality.
+  2. **Test**: `pytest tests/` for repository structure and Task-1 deliverables (required dirs/files, event schema, docs content).
+  3. **Task-1 pipeline**: Runs `notebooks/run_diagnostics.py` and checks that `docs/task-1/DIAGNOSTIC-RESULTS.md` and `data/processed/*.csv` are produced.
+- **Local**: Before pushing, run `ruff check .`, `ruff format .`, and `pytest tests/` (use `requirements-dev.txt`).
+
 ## Repo hygiene
 
 - Keep `data/raw` for raw inputs; `data/processed` for derived datasets.
 - Document all assumptions in `docs/`; link from README.
-- Run linters/formatters before committing (e.g. `black`, `ruff`).
+- Run linters and tests before committing: `ruff check .`, `ruff format .`, `pytest tests/`.

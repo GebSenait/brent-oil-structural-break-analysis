@@ -1,5 +1,0 @@
-# Brent Oil Change Point Analysis — Project rules
-
-- You are working on Birhan Energies' Change Point Analysis and Statistical Modeling project (Brent oil). Task-1 is foundation: workflow, event dataset, diagnostics, docs—no Bayesian model yet.
-- Follow structure in README and docs/task-1/. Event dates: use first trading day on or after calendar date when merging with prices. Never claim an event "caused" a break; use "consistent with" / "aligns with."
-- Prefer clarity and interpretability; document why each step exists. Keep business context in docs/ and README; implementation in src/ and notebooks. See docs/CURSOR-INSTRUCTIONS.md for full guidance.
