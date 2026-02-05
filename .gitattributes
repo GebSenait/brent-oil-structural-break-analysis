@@ -1,0 +1,4 @@
+# Normalize line endings for CI (ruff format expects LF on Linux)
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
