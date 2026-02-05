@@ -1,5 +1,4 @@
 """Validate Task-1 deliverables: event schema, docs content, and key artifacts."""
-import pytest
 import csv
 from pathlib import Path
 

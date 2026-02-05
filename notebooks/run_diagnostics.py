@@ -14,8 +14,6 @@ DOCS_TASK1 = ROOT / "docs" / "task-1"
 
 def main():
     import pandas as pd
-    import numpy as np
-    from scipy import stats
     from statsmodels.tsa.stattools import adfuller, kpss
 
     DOCS_TASK1.mkdir(parents=True, exist_ok=True)
