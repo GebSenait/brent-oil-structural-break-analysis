@@ -3,6 +3,7 @@ Verify that the current Python environment has all packages required to run
 notebooks/task-2-change-point-analysis.ipynb. Run from repo root with the
 project venv activated:  python scripts/verify_task2_env.py
 """
+
 import sys
 
 REQUIRED = [
@@ -14,6 +15,7 @@ REQUIRED = [
     ("seaborn", "seaborn"),
     ("pytensor", "pytensor"),
 ]
+
 
 def main():
     missing = []
@@ -30,6 +32,7 @@ def main():
     print("All packages required for Task-2 notebook are present.")
     print("Python:", sys.executable)
     print("You can run notebooks/task-2-change-point-analysis.ipynb with this environment.")
+
 
 if __name__ == "__main__":
     main()

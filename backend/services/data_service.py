@@ -2,6 +2,7 @@
 Load processed Brent data and change point posterior for the dashboard API.
 Paths are relative to project root (parent of backend/).
 """
+
 import json
 from pathlib import Path
 
@@ -49,7 +50,11 @@ def get_events(category=None):
     df["trading_date"] = pd.to_datetime(df["trading_date"], errors="coerce").dt.strftime("%Y-%m-%d")
     if category:
         df = df[df["category"].str.lower() == category.lower()]
-    return df[["event_id", "date", "trading_date", "category", "short_name", "description"]].fillna("").to_dict("records")
+    return (
+        df[["event_id", "date", "trading_date", "category", "short_name", "description"]]
+        .fillna("")
+        .to_dict("records")
+    )
 
 
 def get_change_point_posterior():

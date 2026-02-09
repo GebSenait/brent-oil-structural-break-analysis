@@ -1,6 +1,7 @@
 """
 REST API routes for change point dashboard: returns, prices, events, posterior summary.
 """
+
 from flask import Blueprint, jsonify, request
 
 from backend.services.data_service import (
@@ -41,5 +42,9 @@ def events():
 def change_point():
     payload = get_change_point_posterior()
     if payload is None:
-        return jsonify({"error": "Change point posterior not found. Run Task-2 notebook to generate change_point_posterior.json."}), 404
+        return jsonify(
+            {
+                "error": "Change point posterior not found. Run Task-2 notebook to generate change_point_posterior.json."
+            }
+        ), 404
     return jsonify(payload)
