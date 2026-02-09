@@ -73,6 +73,35 @@ All steps are implemented in code (e.g. `src/`, notebooks) and documented so the
 
 ---
 
+## Tasks overview
+
+| Task | Description |
+|------|-------------|
+| **Task-1** | Ingest, clean, diagnose; event dataset; handoff to Task-2. |
+| **Task-2** | Bayesian change point model (PyMC); posterior diagnostics; quantified impacts; event alignment. |
+| **Task-3** | Flask API + React dashboard; event highlighting and filtering; decision-ready visualizations. |
+
+---
+
+## Task-2: Table of contents
+
+- **Objective and model:** [docs/task-2/README.md](docs/task-2/README.md)
+- **Notebook:** [notebooks/task-2-change-point-analysis.ipynb](notebooks/task-2-change-point-analysis.ipynb) — PyMC single change point on Brent returns, MCMC diagnostics, export for dashboard.
+
+**Execution:** Run the notebook (Run All) after Task-1. Outputs: posterior summary, trace plots, `data/processed/change_point_posterior.json` for Task-3.
+
+---
+
+## Task-3: Table of contents
+
+- **Objective and architecture:** [docs/task-3/README.md](docs/task-3/README.md)
+- **Backend:** [backend/](backend/) — Flask app, [backend/app.py](backend/app.py), [backend/routes/](backend/routes/), [backend/services/](backend/services/).
+- **Frontend:** [frontend/](frontend/) — React (Vite), [frontend/src/](frontend/src/), components and [Dashboard](frontend/src/pages/Dashboard.jsx).
+
+**Execution:** Start Flask (`python -m backend.app`), then `cd frontend && npm install && npm run dev`. Open http://localhost:3000. Ensure `change_point_posterior.json` exists (run Task-2 notebook) for full dashboard.
+
+---
+
 ## Task-1 overview
 
 **Task-1: Laying the foundation**
@@ -126,32 +155,44 @@ All steps are implemented in code (e.g. `src/`, notebooks) and documented so the
 |------|---------|
 | `.github/workflows/` | CI/CD: `unittest.yml` (lint, tests, Task-1 pipeline). |
 | `data/raw/` | Unaltered Brent price series and external inputs. |
-| `data/processed/` | Cleaned, derived series for modeling. |
+| `data/processed/` | Cleaned series, returns, events aligned, change point posterior (Task-2 export). |
 | `data/events/` | Geopolitical/economic/OPEC event dataset (CSV + README). |
-| `docs/` | Project and task documentation; `docs/task-1/` for Task-1. |
-| `notebooks/` | Exploratory and Task-1 workflows; future Bayesian/dashboard work. |
-| `src/` | Data loaders, diagnostics, and (later) models. |
-| `tests/` | Pytest: repo structure, Task-1 deliverables, pipeline checks. |
+| `docs/` | Task docs: `docs/task-1/`, `docs/task-2/`, `docs/task-3/`. |
+| `notebooks/` | Task-1 ingest/diagnose; **Task-2** change point analysis (PyMC). |
+| `backend/` | **Task-3** Flask API (app, routes, services). |
+| `frontend/` | **Task-3** React dashboard (Vite, components, pages). |
+| `src/` | Data loaders, diagnostics. |
+| `tests/` | Pytest: repo structure, Task-1 deliverables. |
 
-See `data/README.md`, `notebooks/README.md`, `src/README.md`, and `docs/CONTRIBUTING.md` (CI/CD) for details.
+See `data/README.md`, `notebooks/README.md`, `docs/task-2/README.md`, `docs/task-3/README.md`, and `docs/CONTRIBUTING.md` for details.
+
+---
+
+## Insights summary (expected)
+
+- **Statistically significant regime shifts:** Posterior distribution of the change point (τ) and 95% credible interval for break date.
+- **Quantified impacts:** Change in mean return (μ₂ − μ₁) and volatility (σ₂ vs σ₁ or ratio) before vs after the break.
+- **Event alignment:** Detected break date(s) compared with curated geopolitical, economic, and OPEC events for narrative context (no causal claim).
+- **Decision support:** Dashboard enables exploration of returns, prices, events by category, and posterior summary for investment timing, policy planning, and operational strategy.
 
 ---
 
 ## Technologies & tools
 
-- **Language**: Python 3.x (recommend 3.10+).
-- **Key libraries**: pandas, numpy, scipy/statsmodels (e.g. ADF), matplotlib/seaborn. Future: PyMC/Stan or similar for Bayesian change point.
-- **Version control**: Git; branching strategy and commit guidelines in `docs/CONTRIBUTING.md`.
-- **Environment**: Use a virtual environment and a requirements file (e.g. `requirements.txt`) for reproducibility.
+- **Language**: Python 3.10+.
+- **Task-1/2**: pandas, numpy, scipy, statsmodels, matplotlib, seaborn, **PyMC**, **ArviZ**.
+- **Task-3**: **Flask**, Flask-CORS (backend); **React**, Vite, Recharts (frontend).
+- **Version control**: Git; branches `main` (stable), `task-23-dev` (Task-2 + Task-3); see `docs/CONTRIBUTING.md`.
+- **Environment**: Python venv + `requirements.txt`; Node.js for frontend (`frontend/package.json`).
 
 ---
 
-## Getting started
+## Execution instructions
 
-1. Clone the repo; switch to `task-1-dev` for Task-1 work.
-2. **Create and activate a Python virtual environment**, then install dependencies. See **`docs/SETUP.md`** for step-by-step instructions. Use Python **3.10+**; install from `requirements.txt`.
-3. Place Brent price data in `data/raw/` and document the source (or use existing `BrentOilPrices.csv`).
-4. Follow the workflow in `docs/task-1/README.md` (ingest → diagnose → document).
-5. Run **`notebooks/task1_ingest_clean_diagnose.ipynb`** with the venv kernel selected; diagnostics are recorded in `docs/task-1/`.
+1. **Setup:** Clone the repo; create and activate a Python 3.10+ venv; `pip install -r requirements.txt`. See `docs/SETUP.md`.
+2. **Task-1:** Run `notebooks/task1_ingest_clean_diagnose.ipynb` (Run All). Outputs in `data/processed/` and `docs/task-1/`.
+3. **Task-2:** Run `notebooks/task-2-change-point-analysis.ipynb` (Run All). Outputs in `docs/task-2/` and `data/processed/change_point_posterior.json`.
+4. **Task-3:** Start API: `python -m backend.app` (port 5000). Then: `cd frontend && npm install && npm run dev`; open http://localhost:3000.
+5. **Branch:** Task-2 and Task-3 development on **`task-23-dev`**; merge to `main` when stable.
 
 For contribution and commit strategy, see `docs/CONTRIBUTING.md`.
