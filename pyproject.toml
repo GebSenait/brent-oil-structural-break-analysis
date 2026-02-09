@@ -1,5 +1,11 @@
 # Birhan Energies — Change Point Analysis
-# Lint (ruff) and test (pytest) configuration.
+# Lint (ruff), test (pytest), and type-check (Pyright) configuration.
+
+[tool.pyright]
+# Use project venv so Pyright resolves pymc, arviz, matplotlib, seaborn, etc.
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.10"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -4,7 +4,8 @@
 
 - **main**: Production-ready code and documentation. Protected; only merged via PR.
 - **task-1-dev**: Development for Task-1 (Foundation). All Task-1 work happens here first.
-- **task-N-dev**: Future tasks (e.g. task-2-dev for Bayesian modeling) branch from `main` after Task-1 is merged.
+- **task-23-dev**: Development for Task-2 (Bayesian change point) and Task-3 (Flask + React dashboard). Combined branch; merge to `main` when stable.
+- **task-N-dev**: Other future tasks branch from `main` as needed.
 
 ## Commit Strategy
 

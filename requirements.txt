@@ -16,3 +16,7 @@ arviz>=0.15.0
 # Task-3: Flask API
 flask>=3.0.0
 flask-cors>=4.0.0
+
+# Jupyter
+jupyter>=1.0.0
+ipykernel>=6.0.0
