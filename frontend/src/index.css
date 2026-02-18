@@ -1,0 +1,99 @@
+:root {
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --border: #2d3a4f;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --success: #3fb950;
+  --warning: #d29922;
+  --danger: #f85149;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+button:hover {
+  background: var(--border);
+}
+
+input, select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.app-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.app-header h1 { font-size: 1.5rem; margin: 0; }
+.app-header .subtitle { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
+
+.dashboard { display: flex; flex-direction: column; gap: 1.5rem; }
+.dashboard-section { background: var(--surface); border-radius: 8px; padding: 1.25rem; border: 1px solid var(--border); }
+.dashboard-section h2 { margin: 0 0 1rem; font-size: 1.1rem; }
+
+.summary-card .summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.summary-card .summary-block h3 { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.25rem; }
+.summary-card .value { font-size: 1.1rem; margin: 0; }
+.summary-card .small { font-size: 0.8rem; margin: 0.25rem 0 0; }
+.summary-card .disclaimer { font-size: 0.8rem; color: var(--muted); margin: 1rem 0 0; }
+.summary-card code { background: var(--bg); padding: 0.2em 0.4em; border-radius: 4px; }
+
+.filter-row { margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.filter-row label { color: var(--muted); font-size: 0.9rem; }
+
+.chart-container { width: 100%; min-height: 320px; }
+.table-wrap { overflow-x: auto; }
+.events-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.events-table th, .events-table td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+.events-table th { color: var(--muted); font-weight: 600; }
+.events-table .desc { max-width: 360px; color: var(--muted); }
+.events-table .category { padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.8rem; }
+.category-geopolitical { background: rgba(248,81,73,0.2); color: #f85149; }
+.category-economic { background: rgba(210,153,34,0.2); color: #d29922; }
+.category-opec-policy { background: rgba(63,185,80,0.2); color: #3fb950; }
+
+.muted { color: var(--muted); }
+.error { color: var(--danger); }

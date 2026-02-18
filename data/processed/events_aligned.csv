@@ -1,0 +1,13 @@
+event_id,date,category,short_name,description,notes,trading_date
+EVT_001,2003-03-20,geopolitical,Iraq invasion,US-led invasion of Iraq; concerns over supply disruption and Middle East stability.,Reference: start of invasion; markets had priced in risk in prior weeks.,2003-03-20
+EVT_002,2008-09-15,economic,Lehman collapse,Collapse of Lehman Brothers; global financial crisis and sharp drop in oil demand.,Reference: Lehman filing; oil demand collapse followed over subsequent quarters.,2008-09-15
+EVT_003,2011-02-17,geopolitical,Arab Spring / Libya,Unrest in Libya and broader MENA; Libyan supply disrupted.,Reference: early uprising in Libya; supply losses and risk premium.,2011-02-17
+EVT_004,2014-11-27,opec_policy,OPEC no cut Nov 2014,OPEC meeting in Vienna; decision not to cut production despite oversupply; interpreted as defending market share.,Reference: meeting outcome; contributed to sustained price decline.,2014-11-28
+EVT_005,2016-09-28,opec_policy,OPEC Algiers agreement,OPEC+ preliminary agreement to cut output; first such deal in years.,Reference: announcement day; formal deal followed in Nov 2016.,2016-09-28
+EVT_006,2018-05-08,geopolitical,US Iran sanctions,US withdrawal from JCPOA and reimposition of sanctions on Iran; supply uncertainty.,Reference: US announcement; implementation and waivers followed.,2018-05-08
+EVT_007,2020-03-06,opec_policy,OPEC+ Vienna meeting Mar 2020,OPEC+ meeting failed to agree on cuts; Saudi indicated willingness to raise output.,Reference: meeting end; price war and demand shock overlapped.,2020-03-06
+EVT_008,2020-03-09,economic,COVID demand shock / price crash,COVID-19 pandemic; lockdowns and demand collapse; WTI briefly negative in April.,Reference: Monday after OPEC+ failure; extreme volatility period.,2020-03-09
+EVT_009,2020-04-12,opec_policy,OPEC+ historic cut Apr 2020,OPEC+ agreed to record production cut (~9.7 mb/d) to stabilize prices.,Reference: agreement announcement; implementation from May 2020.,2020-04-14
+EVT_010,2021-11-04,opec_policy,OPEC+ gradual increase Nov 2021,OPEC+ stuck to planned 400 kb/d monthly increase despite pressure to add more.,Reference: meeting; demand recovery and geopolitics in play.,2021-11-04
+EVT_011,2022-02-24,geopolitical,Russia-Ukraine invasion,Full-scale Russian invasion of Ukraine; sanctions and supply uncertainty; risk premium spike.,Reference: invasion start; ongoing impact on gas and oil flows.,2022-02-24
+EVT_012,2022-10-05,opec_policy,OPEC+ cut Oct 2022,OPEC+ announced large cut (2 mb/d) despite Western pressure to keep output high.,Reference: meeting decision; framed as response to demand uncertainty.,2022-10-05

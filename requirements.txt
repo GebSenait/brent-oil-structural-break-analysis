@@ -1,0 +1,33 @@
+# Birhan Energies — Change Point Analysis (Task-1 + Task-2 + Task-3)
+# Single source for all dependencies: Task-1, Task-2, Task-3, run_diagnostics.py, and dev/CI (pytest, ruff).
+# Python 3.10+ recommended.
+#
+# Install (from project root, with venv activated):
+#   python -m pip install --upgrade pip   # optional, avoids version notices
+#   pip install -r requirements.txt
+#
+# Notebooks (Task-1, Task-2): select kernel → Python 3.x ('.venv': venv).
+
+# Task-1: foundation
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+statsmodels>=0.14.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Task-2: Bayesian change point (PyMC)
+pymc>=5.0.0
+arviz>=0.15.0
+
+# Task-3: Flask API
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Jupyter (notebooks Task-1, Task-2)
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Dev / CI: testing, linting (pytest, ruff)
+pytest>=7.0.0
+ruff>=0.1.0

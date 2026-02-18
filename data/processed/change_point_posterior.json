@@ -1,0 +1,37 @@
+{
+  "change_point": {
+    "index_mean": 225.5,
+    "index_median": 225.5,
+    "index_lo": 225.5,
+    "index_hi": 225.5,
+    "date_mean": "2005-02-24",
+    "date_median": "2005-02-24",
+    "date_lo": "2005-02-24",
+    "date_hi": "2005-02-24"
+  },
+  "regime_before": {
+    "mu_mean": -0.0004607144489559799,
+    "mu_sd": 0.0,
+    "sigma_mean": 0.025732066561905565,
+    "sigma_sd": 0.0
+  },
+  "regime_after": {
+    "mu_mean": 0.0012518278749861459,
+    "mu_sd": 0.0,
+    "sigma_mean": 0.023680693461563995,
+    "sigma_sd": 0.0
+  },
+  "impact": {
+    "delta_mu_mean": 0.0017125423239421258,
+    "delta_mu_lo": 0.0017125423239421258,
+    "delta_mu_hi": 0.0017125423239421258,
+    "volatility_ratio_mean": 0.9202795007764192,
+    "volatility_ratio_lo": 0.9202795007764192,
+    "volatility_ratio_hi": 0.9202795007764192
+  },
+  "n_obs": 451,
+  "date_range": [
+    "1987-05-21T00:00:00.000000000",
+    "2022-11-01T00:00:00.000000000"
+  ]
+}
