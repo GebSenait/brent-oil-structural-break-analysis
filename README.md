@@ -294,6 +294,6 @@ See [data/README.md](data/README.md), [notebooks/README.md](notebooks/README.md)
 4. **Task-3 (React dashboard):** Two terminals. **Terminal 1:** `python -m backend.app` (port 5000). **Terminal 2:** `cd frontend` then `npm install` then `npm run dev`; open http://localhost:3000. Requires Node.js; `.vscode/settings.json` helps Cursor’s terminal find npm on Windows — open a new terminal after pulling. Full steps: [docs/task-3/README.md](docs/task-3/README.md).
 5. **Branch:** Task-2 and Task-3 development on **`task-23-dev`**; merge to `main` when stable.
 
-**Testing with sample data (fast, no large CSV):** To avoid long runtimes or OOM with the full Brent series, use the small sample dataset. Generate it with `python scripts/generate_sample_data.py`, then set `USE_SAMPLE_DATA=1` and run Task 1 (or `python notebooks/run_diagnostics.py`); Task 2 and the dashboard then use the same processed outputs. See [docs/TESTING-SAMPLE-DATA.md](docs/TESTING-SAMPLE-DATA.md).
+**Testing with sample data:** To avoid long runtimes or OOM with the full Brent series, use the small sample dataset. Generate it with `python scripts/generate_sample_data.py`, then set `USE_SAMPLE_DATA=1` and run Task 1 (or `python notebooks/run_diagnostics.py`); Task 2 and the dashboard then use the same processed outputs. See [docs/TESTING-SAMPLE-DATA.md](docs/TESTING-SAMPLE-DATA.md).
 
 For contribution and commit strategy, see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
